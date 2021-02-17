@@ -7,7 +7,7 @@ function App() {
       ..
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>this is feature 2?</p>
+        <p>this is feature 7 auto</p>
         <a
           className="App-link"
           href="https://reactjs.org"
