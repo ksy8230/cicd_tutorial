@@ -2,7 +2,7 @@ name: React build
 on:
   pull_request: # master Branch에서 특정 이벤트가 일어났을 때만 실행
     branches:
-      - feature
+      - master
 
 jobs:
   build:
@@ -20,7 +20,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - name: Install Dependencies # 의존 파일 설치
         run: npm install
 
@@ -31,13 +30,13 @@ jobs:
         uses: actions/github-script@0.8.0
         with:
           github-token: ${{ github.token }}
-          script: |
+          script: :|
             const ref = "${{github.ref}}"
             const pull_number = Number(ref.split("/")[2])
             await github.pulls.createReview({
             ...context.repo,
             pull_number,
-            body:"테스트코드를 다시 확인해주세요.",
+            body:"테스트코드를 다시 확인해주세요. ",
             event:"REQUEST_CHANGES"
             })
             await github.pulls.update({
