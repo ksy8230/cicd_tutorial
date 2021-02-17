@@ -1,4 +1,4 @@
-name: React build
+name: Rroject PR
 on:
   pull_request: # master Branch에서 특정 이벤트가 일어났을 때만 실행
     branches:
