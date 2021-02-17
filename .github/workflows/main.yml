@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    #strategy:
-    #  matrix:
-    #    node-version: [8.x, 10.x, 12.x] # ".x" 로 최신 버전도 사용하고 직접 버전 지정도 가능하다
     steps:
       - name: Checkout source code. # 레포지토리 체크아웃
         uses: actions/checkout@master
