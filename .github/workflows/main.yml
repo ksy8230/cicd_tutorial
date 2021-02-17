@@ -1,12 +1,15 @@
 name: React build
 on:
-  push: # master Branch에서 push 이벤트가 일어났을 때만 실행
+  pull_request: # master Branch에서 특정 이벤트가 일어났을 때만 실행
     branches:
-      - master
+      - feature
 
 jobs:
   build:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x] # ".x" 로 최신 버전도 사용하고 직접 버전 지정도 가능하다
     steps:
       - name: Checkout source code. # 레포지토리 체크아웃
         uses: actions/checkout@master
@@ -24,7 +27,7 @@ jobs:
       - name: Install Dependencies # 의존 파일 설치
         run: npm install
 
-      - name: run test code
+      - name: Run Test Code
         run: npm run test:watch
 
       - name: if fail
